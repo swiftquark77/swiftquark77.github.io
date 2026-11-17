@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黑料51每日比赛-赛事日历与战报速览</title>
+<meta name="description" content="黑料51每日比赛是聚焦电竞赛事日历与赛果速览的中文站点，聚合每日对阵、比分复盘、选手状态与观赛指南，提供可核对的赛程时间、版本变更与争议判罚说明，帮助读者快速掌握当日比赛脉络。">
+<meta name="keywords" content="黑料51每日比赛">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111827'/%3E%3Cpath d='M14 40 L26 22 L38 40 L50 22' stroke='%23f59e0b' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='46' r='5' fill='%2334d399'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"黑料51每日比赛","description":"电竞赛事日历与赛果速览站点","inLanguage":"zh-CN"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"每日比赛页面的比分多久更新一次？","acceptedAnswer":{"@type":"Answer","text":"常规赛比赛日按每局结束后5分钟内录入，BO3打满时最后一局结算延后至裁判确认后发布，11月7日的两场加赛记录在23:40完成补录。"}},
+{"@type":"Question","name":"黑料51赛程里的版本标注有什么区别？","acceptedAnswer":{"@type":"Answer","text":"赛程条目标注的是比赛服务器所用补丁，例如11月5日KPL秋季赛使用7.2b，版本差异会直接影响英雄优先级与BP顺序。"}},
+{"@type":"Question","name":"争议判罚在哪个板块能看到原始说明？","acceptedAnswer":{"@type":"Answer","text":"判罚记录收在深度解析的规则变更小节，附裁判公告发布时间、申诉窗口与最终裁定，例如11月4日QG对阵RW的暂停争议。"}},
+{"@type":"Question","name":"观赛指南里提到的二路流在哪里看？","acceptedAnswer":{"@type":"Answer","text":"二路流由各平台主播自行开播，赛程卡片会给出对应主播昵称与开播平台，例如虎牙“老王解说”在11月8日18:30开播。"}},
+{"@type":"Question","name":"选手状态数据来自哪里？","acceptedAnswer":{"@type":"Answer","text":"取自官方赛后数据面板与战队公开训练赛记录，样本只含近10局，标注日期以免与历史巅峰期混淆。"}}
+]}
+</script>
+<style>
+:root{
+  --bg:#0f131a;
+  --bg-soft:#151b25;
+  --panel:#1a2130;
+  --panel-2:#202938;
+  --line:#2b3648;
+  --text:#e6ebf2;
+  --muted:#9aa7ba;
+  --dim:#6f7d92;
+  --primary:#f59e0b;
+  --primary-soft:#3b2f14;
+  --accent:#34d399;
+  --accent-soft:#123227;
+  --danger:#f87171;
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --space:clamp(14px,2.4vw,26px);
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{
+  margin:0;font-family:var(--font);background:var(--bg);color:var(--text);
+  line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+p{margin:0 0 .85em}
+ul,ol{margin:0 0 .85em;padding-left:1.2em}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--primary);color:#111;padding:10px 16px;z-index:200}
+.skip:focus{left:8px;top:8px}
+
+/* 吸顶公告 + 页头 */
+.sticky-wrap{position:sticky;top:0;z-index:100}
+.announce{
+  background:linear-gradient(90deg,#3b2f14,#202938 60%,#123227);
+  border-bottom:1px solid var(--line);
+  font-size:13.5px;color:#f6e3b8;
+}
+.announce-inner{
+  max-width:1240px;margin:0 auto;padding:8px var(--space);
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+}
+.announce .tag{
+  background:var(--primary);color:#181206;font-weight:700;font-size:12px;
+  padding:1px 8px;border-radius:999px;letter-spacing:.5px;
+}
+.announce b{color:#fff}
+.announce .date{color:var(--accent);font-weight:700}
+header.site{
+  background:rgba(15,19,26,.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1240px;margin:0 auto;padding:10px var(--space);
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:.5px}
+.brand svg{width:34px;height:34px;flex:none}
+.brand span{color:var(--text)}
+.brand span em{color:var(--primary);font-style:normal}
+nav.main{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav.main a{
+  font-size:14px;color:var(--muted);padding:6px 10px;border-radius:8px;
+  transition:background .15s,color .15s;
+}
+nav.main a:hover{background:var(--panel);color:var(--text)}
+.header-tools{display:flex;gap:8px;align-items:center}
+.search-box{display:flex;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px 4px 3px 12px}
+.search-box input{
+  background:transparent;border:0;color:var(--text);font-size:14px;width:130px;outline:none;
+}
+.search-box button{
+  background:var(--primary);border:0;color:#181206;font-weight:700;font-size:13px;
+  padding:5px 12px;border-radius:999px;cursor:pointer;
+}
+.menu-btn{
+  display:none;background:var(--panel);border:1px solid var(--line);color:var(--text);
+  padding:7px 12px;border-radius:8px;font-size:14px;cursor:pointer;
+}
+.search-feedback{font-size:13px;color:var(--accent);min-height:0}
+.search-feedback.none{color:var(--danger)}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 82% -10%,rgba(245,158,11,.16),transparent 70%),
+    radial-gradient(700px 320px at 8% 110%,rgba(52,211,153,.12),transparent 70%),
+    linear-gradient(180deg,#121821,#0f131a);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,52px) var(--space) clamp(26px,3.6vw,44px);
+  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(18px,3vw,40px);align-items:center;
+}
+.hero-copy .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:1px;
+  color:var(--accent);border:1px solid var(--accent-soft);background:rgba(52,211,153,.08);
+  padding:3px 10px;border-radius:999px;margin-bottom:14px;
+}
+.hero-copy h1{
+  font-size:clamp(28px,4.2vw,44px);letter-spacing:1px;margin-bottom:14px;
+}
+.hero-copy h1 em{color:var(--primary);font-style:normal}
+.hero-copy .lead{color:var(--muted);font-size:15.5px;max-width:46ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;
+  font-size:14.5px;font-weight:700;border:1px solid transparent;cursor:pointer;
+  transition:transform .15s,background .15s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--primary);color:#181206}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--text)}
+.hero-stats{
+  display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;padding-top:18px;border-top:1px dashed var(--line);
+}
+.hero-stats div b{display:block;font-size:22px;color:var(--primary);font-variant-numeric:tabular-nums}
+.hero-stats div span{font-size:12.5px;color:var(--dim)}
+/* 原创视觉 */
+.hero-art{position:relative;min-height:280px}
+.hero-art svg{width:100%;height:auto}
+.art-badge{
+  position:absolute;font-size:12px;color:var(--muted);background:var(--panel);
+  border:1px solid var(--line);border-radius:8px;padding:4px 9px;
+}
+.art-badge.b1{top:4px;right:8px;color:var(--accent)}
+.art-badge.b2{bottom:6px;left:0;color:var(--primary)}
+
+/* 主内容 */
+main{max-width:1240px;margin:0 auto;padding:0 var(--space)}
+.section{padding:clamp(26px,3.6vw,42px) 0;border-bottom:1px solid var(--line)}
+.section:last-of-type{border-bottom:0}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.sec-head h2{font-size:clamp(20px,2.4vw,26px)}
+.sec-head h2 .bar{
+  display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--primary);
+  margin-right:9px;transform:rotate(45deg) translateY(-1px);
+}
+.sec-head .sub{color:var(--dim);font-size:13px}
+.sec-head .more{margin-left:auto;font-size:13px;color:var(--accent);border-bottom:1px dashed var(--accent-soft);white-space:nowrap}
+
+/* 概览三条 */
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ov-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;
+}
+.ov-card h3{font-size:15.5px;margin-bottom:6px;color:var(--primary)}
+.ov-card p{font-size:14px;color:var(--muted);margin:0}
+
+/* 精选卡片网格 */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .16s,border-color .16s;
+}
+.card:hover{transform:translateY(-3px);border-color:#3d4b62}
+.card img{width:100%;height:150px;object-fit:cover;background:var(--panel-2)}
+.card .body{padding:14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .meta{font-size:12px;color:var(--dim);display:flex;gap:10px;flex-wrap:wrap}
+.card h3{font-size:16px}
+.card p{font-size:13.5px;color:var(--muted);margin:0;flex:1}
+.card .tagline{align-self:flex-start;font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--primary-soft);color:var(--primary)}
+
+/* 最新更新 compact list */
+.updates{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.u-item{
+  display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);align-items:baseline;
+}
+.u-item time{font-size:12.5px;color:var(--accent);font-variant-numeric:tabular-nums;flex:none;width:84px}
+.u-item .txt{font-size:14px;color:var(--muted)}
+.u-item .txt b{color:var(--text);font-weight:600}
+
+/* 分类入口 标签索引 */
+.cat-index{display:flex;flex-wrap:wrap;gap:10px}
+.cat-index a{
+  padding:8px 16px;border-radius:999px;background:var(--panel);border:1px solid var(--line);
+  font-size:14px;color:var(--text);display:inline-flex;gap:8px;align-items:center;
+  transition:background .15s,border-color .15s;
+}
+.cat-index a span{font-size:11.5px;color:var(--dim)}
+.cat-index a:hover{background:var(--panel-2);border-color:var(--primary)}
+
+/* 深度解析 分栏正文 */
+.deep{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:30px;align-items:start}
+.deep-article h3{font-size:18px;margin:22px 0 8px;color:#fff;padding-left:12px;border-left:3px solid var(--primary)}
+.deep-article h3:first-child{margin-top:0}
+.deep-article p{font-size:15px;color:#c9d3e1}
+.deep-article .verdict{
+  background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--primary);
+  border-radius:var(--radius-sm);padding:12px 16px;margin:14px 0;font-size:14.5px;
+}
+.deep-article .verdict b{color:var(--primary)}
+.checklist{
+  background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:14px 18px;margin:16px 0;
+}
+.checklist h4{font-size:14px;color:var(--accent);margin-bottom:8px}
+.checklist li{font-size:14px;color:var(--muted);margin-bottom:5px}
+.deep-side{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;position:sticky;top:126px;
+}
+.deep-side h4{font-size:14px;color:var(--primary);margin-bottom:10px}
+.deep-side ol{padding-left:1.1em;font-size:13.5px;color:var(--muted)}
+.deep-side li{margin-bottom:8px}
+.deep-side li b{color:var(--text)}
+
+/* 体验指南 编号步骤 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+.step{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;
+  position:relative;padding-top:40px;
+}
+.step::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  position:absolute;top:12px;left:16px;font-size:15px;font-weight:800;color:var(--primary);
+  font-variant-numeric:tabular-nums;
+}
+.step h3{font-size:14.5px;margin-bottom:6px}
+.step p{font-size:13px;color:var(--muted);margin:0}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.compare .col{padding:18px 20px;background:var(--panel)}
+.compare .col:nth-child(2){background:var(--panel-2);border-left:1px solid var(--line)}
+.compare h4{font-size:14px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.compare h4::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.compare .col:nth-child(2) h4::before{background:var(--danger)}
+.compare ul{padding-left:1.1em;font-size:13.5px;color:var(--muted);margin:0}
+.compare li{margin-bottom:7px}
+
+/* 榜单 */
+.rank-list{counter-reset:rank;display:flex;flex-direction:column;gap:0}
+.rank-item{
+  display:flex;gap:14px;align-items:center;padding:12px 4px;border-bottom:1px dashed var(--line);
+  counter-increment:rank;
+}
+.rank-item::before{
+  content:counter(rank);flex:none;width:26px;height:26px;border-radius:7px;background:var(--panel-2);
+  color:var(--muted);font-size:13px;font-weight:800;display:grid;place-items:center;
+}
+.rank-item:nth-child(-n+3)::before{background:var(--primary-soft);color:var(--primary)}
+.rank-item .name{font-size:14.5px;font-weight:600;flex:none;width:96px}
+.rank-item .desc{font-size:13px;color:var(--muted);flex:1}
+.rank-item .score{font-size:13px;color:var(--accent);font-variant-numeric:tabular-nums}
+
+/* 引语卡 */
+.quote-card{
+  background:linear-gradient(135deg,#1c2433,#161c28);border:1px solid var(--line);
+  border-radius:var(--radius);padding:22px 26px;position:relative;
+}
+.quote-card::before{
+  content:"“";position:absolute;top:-4px;left:14px;font-size:62px;color:var(--primary);opacity:.35;font-family:Georgia,serif;
+}
+.quote-card p{font-size:15.5px;color:#dbe3ee;margin:0 0 12px;position:relative;z-index:1}
+.quote-card cite{font-size:13px;color:var(--dim);font-style:normal}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:10px}
+details{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;
+}
+details[open]{border-color:#3d4b62}
+summary{
+  cursor:pointer;padding:14px 18px;font-size:15px;font-weight:600;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--primary);font-weight:800;font-size:18px;line-height:1}
+details[open] summary::after{content:"−"}
+details .ans{padding:0 18px 16px;font-size:14px;color:var(--muted)}
+
+/* 评论 */
+.comments{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cmt{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:15px 17px;
+}
+.cmt .who{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cmt .avatar{
+  width:28px;height:28px;border-radius:50%;background:var(--panel-2);color:var(--primary);
+  display:grid;place-items:center;font-size:12.5px;font-weight:800;flex:none;
+}
+.cmt .who b{font-size:13.5px}
+.cmt .who time{font-size:11.5px;color:var(--dim);margin-left:auto}
+.cmt p{font-size:13.5px;color:var(--muted);margin:0}
+.cmt .on{color:var(--accent)}
+
+/* 资讯 时间线 */
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 18px}
+.tl-item::before{
+  content:"";position:absolute;left:-22px;top:6px;width:10px;height:10px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--primary);
+}
+.tl-item time{font-size:12.5px;color:var(--accent);font-variant-numeric:tabular-nums}
+.tl-item h3{font-size:15px;margin:3px 0 4px}
+.tl-item p{font-size:13.5px;color:var(--muted);margin:0}
+
+/* 相关推荐 标签 */
+.reco{display:flex;flex-wrap:wrap;gap:10px}
+.reco a{
+  font-size:13.5px;padding:7px 14px;border-radius:8px;background:var(--panel);
+  border:1px solid var(--line);color:var(--muted);transition:all .15s;
+}
+.reco a:hover{color:var(--primary);border-color:var(--primary);background:var(--primary-soft)}
+
+/* 侧栏 单栏后置 */
+.aside-block{
+  margin-top:34px;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;
+}
+.aside-block h2{font-size:18px;margin-bottom:14px}
+.aside-two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.side-nav{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px}
+.side-nav a{font-size:13.5px;color:var(--muted);padding:6px 10px;border-radius:8px;display:block}
+.side-nav a:hover{background:var(--panel);color:var(--text)}
+.side-nav a.active{background:var(--primary-soft);color:var(--primary);font-weight:700}
+
+/* 页尾 */
+footer.site{
+  background:var(--bg-soft);border-top:1px solid var(--line);margin-top:20px;
+}
+.footer-inner{max-width:1240px;margin:0 auto;padding:36px var(--space) 20px}
+.footer-top{display:grid;grid-template-columns:1.4fr 2fr;gap:34px}
+.footer-brand .brand{margin-bottom:12px}
+.footer-brand p{font-size:13.5px;color:var(--muted);max-width:34ch}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.footer-cols h4{font-size:13.5px;color:var(--primary);margin-bottom:10px}
+.footer-cols a{display:block;font-size:13px;color:var(--muted);padding:3px 0}
+.footer-cols a:hover{color:var(--text)}
+.footer-note{
+  margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--dim);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+/* 回到顶部 */
+#toTop{
+  position:fixed;right:18px;bottom:22px;z-index:90;width:44px;height:44px;border-radius:50%;
+  background:var(--primary);color:#181206;border:0;font-size:20px;font-weight:800;cursor:pointer;
+  display:none;place-items:center;box-shadow:var(--shadow);
+}
+#toTop.show{display:grid}
+
+/* 响应式 */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-art{order:-1;min-height:180px;max-width:420px}
+  .overview{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .deep{grid-template-columns:1fr}
+  .deep-side{position:static}
+  .steps{grid-template-columns:1fr 1fr}
+  .comments{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr}
+  nav.main{order:3;width:100%;display:none;margin-left:0}
+  nav.main.open{display:flex}
+  .menu-btn{display:inline-block}
+  .search-box input{width:96px}
+}
+@media (max-width:640px){
+  html{scroll-padding-top:150px}
+  .header-inner{gap:10px}
+  .brand{font-size:16px}
+  .overview,.card-grid,.updates,.steps,.compare,.comments,.aside-two,.footer-cols{grid-template-columns:1fr}
+  .compare .col:nth-child(2){border-left:0;border-top:1px solid var(--line)}
+  .hero-stats{gap:16px}
+  .u-item{flex-wrap:wrap;gap:4px}
+  .u-item time{width:auto}
+  .rank-item .name{width:78px}
+  .search-box{order:2}
+  .search-box input{width:86px}
+  .footer-note{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .card:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="/#main">跳到主要内容</a>
+
+<div class="sticky-wrap">
+  <div class="announce" role="region" aria-label="站点公告">
+    <div class="announce-inner">
+      <span class="tag">赛程更新</span>
+      <span><b>黑料51每日比赛</b> 11月8日共排布 <span class="date">7 场</span> BO3，KPL 秋季赛加赛名单已录入，版本统一为 <b>7.2c</b>。</span>
+      <span class="date">11月7日 23:40 补录</span>
+    </div>
+  </div>
+  <header class="site">
+    <div class="header-inner">
+      <a class="brand" href="/#hero" aria-label="黑料51每日比赛首页">
+        <svg viewBox="0 0 64 64" role="img" aria-label="赛事折线标志">
+          <rect width="64" height="64" rx="14" fill="#1a2130"/>
+          <path d="M14 40 L26 22 L38 40 L50 22" stroke="#f59e0b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="46" r="5" fill="#34d399"/>
+        </svg>
+        <span>黑料<em>51</em>每日比赛</span>
+      </a>
+      <nav class="main" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">赛况概览</a>
+        <a href="/#picks">精选战报</a>
+        <a href="/#updates">今日更新</a>
+        <a href="/#cats">频道分类</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">观赛指南</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="header-tools">
+        <form class="search-box" id="searchForm" role="search" aria-label="站内搜索">
+          <input type="search" id="searchInput" placeholder="搜战队/赛程/选手" aria-label="输入关键词搜索">
+          <button type="submit">查找</button>
+        </form>
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+      </div>
+    </div>
+    <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite" style="max-width:1240px;margin:0 auto;padding:0 var(--space) 8px;"></div>
+  </header>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">11月8日 · 秋季赛第9周 · 补丁 7.2c</span>
+      <h1>黑料<em>51</em>每日比赛</h1>
+      <p class="lead">每天盯一遍对局表，比分、BP 顺序、暂停判罚和选手手伤记录都落在同一张赛程页里。今天 7 场 BO3，最早 14:00 开打，最晚一场 21:30 进 BP；底下 11 个板块按用途分开，不把战报和评论混着写。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/#updates">看今日赛程</a>
+        <a class="btn btn-ghost" href="/#deep">读判罚解析</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>7</b><span>今日 BO3 场次</span></div>
+        <div><b>21</b><span>已完赛小局</span></div>
+        <div><b>3</b><span>本周争议判罚</span></div>
+        <div><b>7.2c</b><span>当前比赛版本</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 300" role="presentation">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f59e0b" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#f59e0b" stop-opacity=".15"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#34d399" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#34d399" stop-opacity=".1"/>
+          </linearGradient>
+        </defs>
+        <rect x="8" y="18" width="404" height="264" rx="18" fill="#151b25" stroke="#2b3648"/>
+        <g stroke="#2b3648" stroke-width="1" opacity=".7">
+          <line x1="28" y1="80" x2="392" y2="80"/>
+          <line x1="28" y1="150" x2="392" y2="150"/>
+          <line x1="28" y1="220" x2="392" y2="220"/>
+        </g>
+        <path d="M34 222 L96 170 L150 196 L214 112 L268 150 L330 74 L388 108" fill="none" stroke="url(#gA)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 250 L96 232 L150 240 L214 200 L268 214 L330 182 L388 196" fill="none" stroke="url(#gB)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 9"/>
+        <g fill="#f59e0b">
+          <circle cx="96" cy="170" r="5"/><circle cx="214" cy="112" r="5"/><circle cx="330" cy="74" r="5"/>
+        </g>
+        <g fill="#34d399">
+          <circle cx="150" cy="240" r="4"/><circle cx="268" cy="214" r="4"/><circle cx="388" cy="196" r="4"/>
+        </g>
+        <text x="34" y="48" fill="#9aa7ba" font-size="13" font-family="sans-serif">小局推进曲线 · 11月8日</text>
+      </svg>
+      <span class="art-badge b1">BO3 · 决胜局 2:1</span>
+      <span class="art-badge b2">7.2c 版本 · BP 禁用位 2</span>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+  <!-- 1 赛况概览 -->
+  <section class="section" id="overview">
+    <div class="sec-head">
+      <h2><span class="bar"></span>赛况概览</h2>
+      <span class="sub">11月8日 14:00 起，跨 KPL、LDL、VCT 三个赛道</span>
+    </div>
+    <div class="overview">
+      <div class="ov-card">
+        <h3>KPL 秋季赛第9周</h3>
+        <p>今天三场 BO3：佛山DRG 对 重庆狼队 14:00，成都AG 对 武汉eStar 17:00，北京WB 对 广州TTG 21:30。三场都打满的可能性不低，狼队最近10局里7局拖到决胜局。</p>
+      </div>
+      <div class="ov-card">
+        <h3>LDL 发展联赛</h3>
+        <p>下午两场 BO3 在 16:00 与 19:00 开打，BLG.J 与 EDG.Y 二队阵容上调一线，首发打野换人，赛程页已标黄。</p>
+      </div>
+      <div class="ov-card">
+        <h3>VCT 亚太区资格赛</h3>
+        <p>晚间两场 BO3，A 组头名之争落在 DRX 与 Gen.G 之间。11月6日双方交手 1:2，决胜图莲花古城 11:13。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 精选战报推荐 -->
+  <section class="section" id="picks">
+    <div class="sec-head">
+      <h2><span class="bar"></span>精选战报推荐</h2>
+      <a class="more" href="/#updates">全部战报 →</a>
+    </div>
+    <div class="card-grid">
+      <article class="card">
+        <img src="https://picsum.photos/seed/kpl-drg-wolves/600/360" width="600" height="360" loading="lazy" alt="重庆狼队与佛山DRG决胜局水晶推进画面示意">
+        <div class="body">
+          <div class="meta"><span>KPL 秋季赛</span><span>11月7日</span></div>
+          <h3>狼队让一追二，决胜局 14 分 52 秒收掉 DRG</h3>
+          <p>第三局狼队换上替补中路“清融”，大乔体系两波转线直接拆掉双边一塔。赛后语音显示决策由清融先喊。</p>
+          <span class="tagline">让一追二</span>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/ag-estar-game3/600/360" width="600" height="360" loading="lazy" alt="成都AG与武汉eStar第三局BP界面示意">
+        <div class="body">
+          <div class="meta"><span>KPL 秋季赛</span><span>11月7日</span></div>
+          <h3>AG 二比零 eStar，镜与阿古朵双野核没放出来</h3>
+          <p>两局 AG 都在前三手锁打野，eStar 的野核池被压缩到只剩澜。第二局 AG 经济领先峰值 9.8k。</p>
+          <span class="tagline">BP 压制</span>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/ldl-blgj-edgy/600/360" width="600" height="360" loading="lazy" alt="LDL 发展联赛二队对局现场示意">
+        <div class="body">
+          <div class="meta"><span>LDL 发展联赛</span><span>11月6日</span></div>
+          <h3>BLG.J 打野上调一线，临时替补小将首局 8-1-6</h3>
+          <p>首发名单 18:20 才公布，替补打野“Mo”用赵信开局三路游走。EDG.Y 二队在第一局丢了 4 条小龙。</p>
+          <span class="tagline">阵容变动</span>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/vct-drx-geng/600/360" width="600" height="360" loading="lazy" alt="VCT 亚太区资格赛选手对枪画面示意">
+        <div class="body">
+          <div class="meta"><span>VCT 亚太资格赛</span><span>11月6日</span></div>
+          <h3>DRX 1:2 不敌 Gen.G，莲花古城决胜图 11:13</h3>
+          <p>第 22 回合 DRX 存钱局被 Gen.G 五人强起打穿，赛后教练承认“判断对手会保枪”。</p>
+          <span class="tagline">决胜图</span>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/kpl-wb-ttg-pause/600/360" width="600" height="360" loading="lazy" alt="北京WB与广州TTG比赛暂停裁判示意">
+        <div class="body">
+          <div class="meta"><span>KPL 秋季赛</span><span>11月4日</span></div>
+          <h3>WB 对 TTG 第二局暂停 23 分钟，裁判维持原 BP</h3>
+          <p>暂停触发点是 TTG 辅助设备断连。联盟 11月5日公告确认按规则 6.3 条处理，不重开、不换边。</p>
+          <span class="tagline">暂停判罚</span>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/patch-72c-notes/600/360" width="600" height="360" loading="lazy" alt="7.2c 版本改动与英雄池对照示意">
+        <div class="body">
+          <div class="meta"><span>版本观察</span><span>11月5日</span></div>
+          <h3>7.2c 削弱镜与敖隐，野核 BP 顺序整体前移</h3>
+          <p>镜一技能伤害下调 20 点、敖隐大招冷却加 8 秒。11月6日起 KPL 三场比赛打野首抢率从 41% 升到 68%。</p>
+          <span class="tagline">版本变动</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3 今日更新 -->
+  <section class="section" id="updates">
+    <div class="sec-head">
+      <h2><span class="bar"></span>最新更新</h2>
+      <span class="sub">赛程条目按裁判确认时间倒序</span>
+    </div>
+    <div class="updates">
+      <div class="u-item"><time>11月8日 12:10</time><span class="txt"><b>北京WB 对 广州TTG</b> 首发确认，TTG 中路换回“清波”，上一场替补“阿豆”回训练室。</span></div>
+      <div class="u-item"><time>11月8日 11:35</time><span class="txt"><b>VCT 亚太资格赛</b> 加赛顺序调整，DRX 对 Gen.G 提前到 19:00，原 21:00 场次顺延。</span></div>
+      <div class="u-item"><time>11月8日 10:02</time><span class="txt"><b>7.2c</b> 比赛服热更完成，镜、敖隐、大乔三处数值与官方公告一致。</span></div>
+      <div class="u-item"><time>11月7日 23:40</time><span class="txt"><b>佛山DRG</b> 提交伤病报告，射手“梦岚”腕部贴扎，第二局后申请医疗暂停 6 分钟。</span></div>
+      <div class="u-item"><time>11月7日 21:15</time><span class="txt"><b>LDL</b> BLG.J 对 EDG.Y 第二局重赛，原因是比赛服网络抖动，裁判记录 20:48 至 20:56。</span></div>
+      <div class="u-item"><time>11月7日 18:30</time><span class="txt"><b>KPL 联盟</b> 公布 11月4日暂停争议的完整裁定书，共 4 页，关键词“设备故障非战队责任”。</span></div>
+      <div class="u-item"><time>11月6日 22:05</time><span class="txt"><b>VCT</b> DRX 1:2 Gen.G，赛后技术统计：DRX 首杀率 38%，Gen.G 52%。</span></div>
+      <div class="u-item"><time>11月6日 16:20</time><span class="txt"><b>成都AG</b> 公布二队上调名单，打野“小轩”进入一队大名单，11月9日可上场。</span></div>
+    </div>
+  </section>
+
+  <!-- 4 频道分类 -->
+  <section class="section" id="cats">
+    <div class="sec-head">
+      <h2><span class="bar"></span>频道分类</h2>
+      <span class="sub">按赛道、版本、判罚、选手四条线拆分</span>
+    </div>
+    <div class="cat-index">
+      <a href="/#picks">KPL 秋季赛战报 <span>42</span></a>
+      <a href="/#updates">LDL 发展联赛 <span>27</span></a>
+      <a href="/#picks">VCT 亚太资格赛 <span>19</span></a>
+      <a href="/#deep">暂停与判罚记录 <span>11</span></a>
+      <a href="/#deep">7.2c 版本改动 <span>8</span></a>
+      <a href="/#guide">二路流观赛 <span>16</span></a>
+      <a href="/#rank">打野选手状态榜 <span>24</span></a>
+      <a href="/#picks">BO3 决胜局数据 <span>33</span></a>
+      <a href="/#comments">观众吐槽区 <span>58</span></a>
+      <a href="/#faq">新手观赛问答 <span>21</span></a>
+      <a href="/#timeline">伤病与轮换 <span>14</span></a>
+      <a href="/#reco">赛程日历订阅 <span>9</span></a>
+    </div>
+  </section>
+
+  <!-- 5 深度解析 -->
+  <section class="section" id="deep">
+    <div class="sec-head">
+      <h2><span class="bar"></span>深度解析</h2>
+      <span class="sub">本周唯一主体阅读区，观点可被核对、也可被反驳</span>
+    </div>
+    <div class="deep">
+      <article class="deep-article">
+        <h3>暂停 23 分钟没有改变比赛走向，但改变了 BP 心理</h3>
+        <p>11月4日北京WB 对 广州TTG 第二局，暂停发生在 BP 结束、进入加载的第 47 秒。TTG 辅助“冰尘”的设备断连，裁判按规则 6.3 条判定为设备故障，维持原 BP、不换边。联盟 11月5日公告 4 页，其中第 2 页明确写“故障非战队操作所致”。</p>
+        <p>争议点不在判罚本身，而在 23 分钟里两边的信息差。WB 教练在暂停期间被拍到翻看平板上的英雄胜率表，TTG 一侧则在和裁判确认重开边界。裁定书说“双方均未获得额外战术信息”，这句话可反驳：翻看平板本身不等于获得了针对本局的新信息，但至少说明暂停期并非完全封闭。</p>
+        <div class="verdict"><b>判断：</b>暂停对局内胜负的影响可以排除，TTG 恢复后第一波团战 4 换 1，经济差从 -1.2k 拉到 +2.4k，说明设备恢复没有遗留操作问题；但 BP 心理层面的影响无法用数据排除。</div>
+
+        <h3>7.2c 之后打野首抢率 41% → 68%，样本只有三天</h3>
+        <p>11月5日 7.2c 上线，镜一技能伤害下调 20 点，敖隐大招冷却增加 8 秒。11月6日三场 KPL 比赛里，打野位首抢 7 次、共 10 局，首抢率 68%；11月1日至11月4日的 12 局里只有 5 次，41%。</p>
+        <p>三天样本说明不了版本定论。真正可核对的是 BP 顺序前移的原因：镜被削后，能稳定开团的野核只剩澜与露娜，先抢打野等于先锁开团点。11月7日狼队对 DRG 第三局，狼队第二手就锁澜，赛后语音里教练说“不锁对面就拿了”。</p>
+        <div class="checklist">
+          <h4>可核对结构：版本影响拆三层</h4>
+          <ul>
+            <li><b>数值层：</b>镜一技能基础伤害 300→280，成长 60→54，来源官方 7.2c 公告。</li>
+            <li><b>BP 层：</b>打野首抢率 41%→68%，样本 22 局，时间 11月1日至11月6日。</li>
+            <li><b>结果层：</b>首抢打野一方的小局胜率 14/22，63.6%，未显著高于均值。</li>
+          </ul>
+        </div>
+
+        <h3>“让一追二”在数据上没有想象中常见</h3>
+        <p>11月7日狼队让一追二 DRG，是本周第二次。本周 KPL 共 9 场 BO3，先丢一局后翻盘 2 场，22.2%。同一周先赢一局最终获胜 7 场，77.8%。两组数字放在一起看，先丢一局翻盘仍是小概率事件，单场“让一追二”更容易被记住，是因为叙事完整，不是因为发生频率高。</p>
+        <p>狼队这场翻盘有具体抓手：第三局换人后大乔体系转线，14 分 52 秒推掉水晶。DRG 在第二局已经暴露出边路处理慢的问题，第三局被针对两次，都是同一侧河道。</p>
+
+        <h3>选手伤病记录该不该进赛程页</h3>
+        <p>11月7日佛山DRG 射手“梦岚”腕部贴扎，第二局后医疗暂停 6 分钟。赛程页标注了这条记录，附裁判确认时间 23:40。反对意见认为伤病属于隐私，不该进公开赛程；支持意见认为它直接影响阵容与轮换，观众需要知道为什么某人没上。</p>
+        <p>当前做法是只记“是否申请医疗暂停、时长、是否影响后续出场”，不写具体诊断。11月7日这条记录没有写伤情名称，只写“腕部贴扎”。这是一个折中，可被检验：如果后续出现因伤病导致的临时换人，赛程页应在 30 分钟内补一行轮换说明。</p>
+
+        <h3>争议内容分层：事实、回应、转述、推测</h3>
+        <p><b>事实：</b>11月4日暂停 23 分钟，裁定维持原 BP。11月5日联盟公告 4 页。11月7日 DRG 提交伤病报告。<b>回应：</b>TTG 教练在 11月5日采访中说“暂停后我们沟通慢了半拍”。<b>转述：</b>有解说在直播里提到“WB 教练翻平板”，该说法来自现场镜头，未见官方说明。<b>推测：</b>暂停期是否构成信息优势，目前只有镜头画面，没有联盟调查结论。</p>
+      </article>
+      <aside class="deep-side">
+        <h4>本周核对清单</h4>
+        <ol>
+          <li><b>11月4日</b> WB 对 TTG，暂停 23 分钟，裁定书 4 页。</li>
+          <li><b>11月5日</b> 7.2c 上线，镜、敖隐、大乔三处改动。</li>
+          <li><b>11月6日</b> VCT DRX 1:2 Gen.G，首杀率 38% 对 52%。</li>
+          <li><b>11月7日</b> DRG 伤病暂停 6 分钟，23:40 补录。</li>
+          <li><b>11月8日</b> 7 场 BO3，版本统一 7.2c。</li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 6 观赛体验指南 -->
+  <section class="section" id="guide">
+    <div class="sec-head">
+      <h2><span class="bar"></span>观赛体验指南</h2>
+      <span class="sub">从查赛程到看二路流，四步走完</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>先锁开赛时间</h3>
+        <p>11月8日最早 14:00，最晚 21:30。KPL 场次通常提前 10 分钟进 BP，迟到会错过首抢。</p>
+      </div>
+      <div class="step">
+        <h3>确认比赛版本</h3>
+        <p>赛程卡片右上角标 7.2c 才是当前版本。看到 7.2b 的旧条目，比分仍有效，但 BP 参考价值下降。</p>
+      </div>
+      <div class="step">
+        <h3>选一路解说</h3>
+        <p>官方流看数据面板，二路流听 BP 思路。11月8日虎牙“老王解说”18:30 开播，主聊打野首抢。</p>
+      </div>
+      <div class="step">
+        <h3>赛后回看判罚</h3>
+        <p>有暂停或重赛的场次，裁定书一般赛后 24 小时内公布，例如 11月4日那场在 11月5日 18:30 发出。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 版本对照 -->
+  <section class="section" id="compare">
+    <div class="sec-head">
+      <h2><span class="bar"></span>7.2b 与 7.2c 对照</h2>
+      <span class="sub">同一套 BP 思路在两个版本里的差别</span>
+    </div>
+    <div class="compare">
+      <div class="col">
+        <h4>7.2c 当前版本</h4>
+        <ul>
+          <li>镜一技能基础伤害 300→280，成长 60→54。</li>
+          <li>敖隐大招冷却 60→68 秒。</li>
+          <li>大乔二技能传送读条 4→4.5 秒。</li>
+          <li>打野首抢率 68%，样本 10 局（11月6日）。</li>
+          <li>澜、露娜进入第一轮 BP 的概率上升。</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>7.2b 旧版本</h4>
+        <ul>
+          <li>镜仍为版本第一野核，首抢率 41%。</li>
+          <li>敖隐大招节奏更快，边路压制线更凶。</li>
+          <li>大乔体系转线成本低，常与镜搭配。</li>
+          <li>打野位常留到第二轮补，先抢中边。</li>
+          <li>11月1日至11月4日 12 局样本。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 榜单 -->
+  <section class="section" id="rank">
+    <div class="sec-head">
+      <h2><span class="bar"></span>打野选手状态榜</h2>
+      <span class="sub">按近 10 局 KDA 与首杀参与率加权，样本截至 11月7日</span>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item"><span class="name">清融</span><span class="desc">狼队替补上场 3 局，参团率 74%，第三局大乔转线两次先手。</span><span class="score">8.9</span></div>
+      <div class="rank-item"><span class="name">小轩</span><span class="desc">AG 二队上调，近 10 局 KDA 4.8，赵信三局全胜。</span><span class="score">8.6</span></div>
+      <div class="rank-item"><span class="name">Mo</span><span class="desc">BLG.J 临时首发，首局 8-1-6，小龙控制 4 条。</span><span class="score">8.4</span></div>
+      <div class="rank-item"><span class="name">澜客</span><span class="desc">eStar 野核，对 AG 两局被压，首杀参与率降到 29%。</span><span class="score">7.1</span></div>
+      <div class="rank-item"><span class="name">阿豆</span><span class="desc">TTG 替补，11月8日回训练室，近 6 局 KDA 3.2。</span><span class="score">6.8</span></div>
+    </div>
+  </section>
+
+  <!-- 9 FAQ -->
+  <section class="section" id="faq">
+    <div class="sec-head">
+      <h2><span class="bar"></span>常见问题</h2>
+      <span class="sub">关于赛程、版本与判罚的高频疑问</span>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>每日比赛页面的比分多久更新一次？</summary>
+        <div class="ans">常规赛比赛日按每局结束后 5 分钟内录入，BO3 打满时最后一局结算延后至裁判确认后发布。11月7日两场加赛记录在 23:40 完成补录。</div>
+      </details>
+      <details>
+        <summary>黑料51赛程里的版本标注有什么区别？</summary>
+        <div class="ans">赛程条目标注的是比赛服务器所用补丁。11月5日 KPL 秋季赛使用 7.2b，11月6日起切到 7.2c，版本差异会直接影响英雄优先级与 BP 顺序，例如镜的首抢率从 41% 升到 68%。</div>
+      </details>
+      <details>
+        <summary>争议判罚在哪个板块能看到原始说明？</summary>
+        <div class="ans">判罚记录收在深度解析的规则变更小节，附裁判公告发布时间、申诉窗口与最终裁定。11月4日 WB 对 TTG 的暂停争议，裁定书 4 页在 11月5日 18:30 公布。</div>
+      </details>
+      <details>
+        <summary>观赛指南里提到的二路流在哪里看？</summary>
+        <div class="ans">二路流由各平台主播自行开播，赛程卡片会给出对应主播昵称与开播平台。11月8日虎牙“老王解说”18:30 开播，主聊打野首抢与 7.2c 版本改动。</div>
+      </details>
+      <details>
+        <summary>选手状态数据来自哪里？</summary>
+        <div class="ans">取自官方赛后数据面板与战队公开训练赛记录，样本只含近 10 局，标注日期以免与历史巅峰期混淆。清融的 8.9 分对应 11月7日三局样本。</div>
+      </details>
+      <details>
+        <summary>为什么有的比赛打满三局，有的两局就结束？</summary>
+        <div class="ans">常规赛为 BO3，先赢两局即结束。11月7日 AG 对 eStar 是 2:0，狼队对 DRG 是 2:1。本周 9 场 BO3 里，打满三局 4 场，占比 44.4%。</div>
+      </details>
+      <details>
+        <summary>伤病记录会不会影响后续出场名单？</summary>
+        <div class="ans">会。11月7日 DRG 射手梦岚腕部贴扎、医疗暂停 6 分钟，是否影响 11月9日比赛要看队医评估。赛程页只记暂停与贴扎，不写诊断。</div>
+      </details>
+      <details>
+        <summary>11月8日的加赛顺序为什么调整？</summary>
+        <div class="ans">VCT 亚太资格赛 A 组头名需在同一天分出，DRX 对 Gen.G 提前到 19:00，原 21:00 场次顺延。调整通知在 11月8日 11:35 发布。</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 10 用户评论 -->
+  <section class="section" id="comments">
+    <div class="sec-head">
+      <h2><span class="bar"></span>观众评论</h2>
+      <span class="sub">来自赛程页留言区，11月7日至11月8日</span>
+    </div>
+    <div class="comments">
+      <div class="cmt">
+        <div class="who"><span class="avatar">林</span><b>林北看比赛</b><time>11月8日 09:12</time></div>
+        <p>狼队第三局换<span class="on">清融</span>这个操作，第二局结束我就猜到了。大乔转线那两波确实干净，DRG 边路都没跟上。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">七</span><b>七号看台</b><time>11月8日 08:40</time></div>
+        <p>暂停 23 分钟那段裁定书我看了，第 2 页写设备故障非战队操作，但没解释平板的事，这点说服力不够。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">阿</span><b>阿凉不凉</b><time>11月7日 23:55</time></div>
+        <p>DRG 射手都贴扎了还打满三局，教练组是真敢。第二局医疗暂停回来那一波 4 换 1 倒是打回来了。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">老</span><b>老猫的猫</b><time>11月7日 22:30</time></div>
+        <p>7.2c 削镜之后打野首抢率 68%，样本才 10 局就下结论有点急。再看看下周。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">K</span><b>KPL小卖部</b><time>11月7日 20:18</time></div>
+        <p>DRX 莲花古城第 22 回合存钱局被打穿，教练说判断对手会保枪，这判断反了也没法怪选手。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">白</span><b>白开水加冰</b><time>11月7日 19:02</time></div>
+        <p>BLG.J 那个替补打野 Mo 首局 8-1-6，赵信开局三路游走，一线队是不是该考虑提人了。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">小</span><b>小林看BP</b><time>11月7日 17:45</time></div>
+        <p>AG 两局前三手锁打野，eStar 野核池被压到只剩澜，这 BP 比比分好看。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">路</span><b>路人甲不甲</b><time>11月7日 16:20</time></div>
+        <p>赛程页写“让一追二本周第二次”，我翻了记录确实是 9 场里 2 场，没夸大。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><span class="avatar">陈</span><b>陈年旧事</b><time>11月7日 15:08</time></div>
+        <p>二路流时间能不能直接标在赛程卡片上，每次都要翻观赛指南，有点麻烦。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 相关资讯 时间线 -->
+  <section class="section" id="timeline">
+    <div class="sec-head">
+      <h2><span class="bar"></span>相关资讯</h2>
+      <span class="sub">11月5日至11月8日，与本页赛程直接相关</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <time>11月8日 11:35</time>
+        <h3>VCT 亚太资格赛加赛顺序调整</h3>
+        <p>DRX 对 Gen.G 提前到 19:00，原 21:00 场次顺延。官方说明是 A 组头名需同日分出。</p>
+      </div>
+      <div class="tl-item">
+        <time>11月7日 23:40</time>
+        <h3>佛山DRG 提交伤病报告</h3>
+        <p>射手梦岚腕部贴扎，第二局后医疗暂停 6 分钟，是否影响 11月9日比赛待队医评估。</p>
+      </div>
+      <div class="tl-item">
+        <time>11月7日 18:30</time>
+        <h3>KPL 联盟公布暂停争议裁定书</h3>
+        <p>共 4 页，确认按规则 6.3 条处理，维持原 BP、不换边，申诉窗口为 24 小时。</p>
+      </div>
+      <div class="tl-item">
+        <time>11月6日 22:05</time>
+        <h3>DRX 1:2 Gen.G，首杀率差距 14 个百分点</h3>
+        <p>技术统计 DRX 首杀率 38%、Gen.G 52%，决胜图莲花古城 11:13。</p>
+      </div>
+      <div class="tl-item">
+        <time>11月5日 10:00</time>
+        <h3>7.2c 补丁上线比赛服</h3>
+        <p>镜一技能伤害下调 20 点，敖隐大招冷却加 8 秒，大乔二技能读条加 0.5 秒。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 引语卡 -->
+  <section class="section" id="voice">
+    <div class="sec-head">
+      <h2><span class="bar"></span>教练与选手说法</h2>
+    </div>
+    <div class="quote-card">
+      <p>“暂停回来第一波我们沟通慢了半拍，但设备是好的，操作没问题。输在第二局边路处理。”——TTG 教练 11月5日赛后采访原文</p>
+      <cite>来源：11月5日 KPL 官方赛后采访，时长 4 分 12 秒</cite>
+    </div>
+  </section>
+
+  <!-- 13 相关推荐 -->
+  <section class="section" id="reco">
+    <div class="sec-head">
+      <h2><span class="bar"></span>相关推荐</h2>
+      <span class="sub">按赛道与关键词直达</span>
+    </div>
+    <div class="reco">
+      <a href="/#picks">KPL 秋季赛战报合集</a>
+      <a href="/#updates">LDL 二队上调名单</a>
+      <a href="/#picks">VCT 亚太资格赛赛程</a>
+      <a href="/#deep">暂停判罚裁定书原文</a>
+      <a href="/#deep">7.2c 版本改动解读</a>
+      <a href="/#rank">打野选手状态榜</a>
+      <a href="/#guide">二路流观赛时间表</a>
+      <a href="/#comments">观众吐槽精选</a>
+      <a href="/#faq">BO3 赛制问答</a>
+      <a href="/#timeline">伤病与轮换时间线</a>
+      <a href="/#compare">7.2b 与 7.2c 对照</a>
+      <a href="/#voice">教练赛后采访原话</a>
+    </div>
+  </section>
+
+  <!-- 侧栏后置 移动端顺序一致 -->
+  <div class="aside-block" id="side">
+    <div class="aside-two">
+      <div>
+        <h2>频道导航</h2>
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#overview">赛况概览</a></li>
+          <li><a href="/#picks">精选战报推荐</a></li>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#cats">频道分类</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">观赛体验指南</a></li>
+          <li><a href="/#compare">版本对照</a></li>
+          <li><a href="/#rank">打野状态榜</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#timeline">相关资讯</a></li>
+          <li><a href="/#reco">相关推荐</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>订阅与说明</h2>
+        <p style="font-size:13.5px;color:var(--muted)">赛程日历按天更新，比赛服切换版本当日会在公告条标出补丁号。11月9日将有 KPL 三场、LDL 两场，开赛时间待联盟 11月8日 20:00 确认。</p>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:0">本页示例数据均标注来源与时间，判罚条目以裁判公告为准，评论为读者留言摘录。</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="/#hero">
+          <svg viewBox="0 0 64 64" role="img" aria-label="赛事折线标志">
+            <rect width="64" height="64" rx="14" fill="#1a2130"/>
+            <path d="M14 40 L26 22 L38 40 L50 22" stroke="#f59e0b" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="50" cy="46" r="5" fill="#34d399"/>
+          </svg>
+          <span>黑料<em>51</em>每日比赛</span>
+        </a>
+        <p>盯对局表、记版本号、留判罚底稿，把每天的比赛拆成能核对的时间、比分和名单。</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h4>赛道</h4>
+          <a href="/#picks">KPL 秋季赛</a>
+          <a href="/#updates">LDL 发展联赛</a>
+          <a href="/#picks">VCT 亚太资格赛</a>
+          <a href="/#timeline">伤病与轮换</a>
+        </div>
+        <div>
+          <h4>解读</h4>
+          <a href="/#deep">暂停与判罚</a>
+          <a href="/#compare">7.2c 版本对照</a>
+          <a href="/#rank">打野状态榜</a>
+          <a href="/#guide">二路流观赛</a>
+        </div>
+        <div>
+          <h4>互动</h4>
+          <a href="/#comments">观众评论</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#reco">相关推荐</a>
+          <a href="/#cats">频道分类</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>示例数据说明：赛程、比分、判罚与评论均按垂类特征生成，重要信息以官方公告为准。</span>
+      <span>页面更新于 11月8日 12:10，对应最新更新板块首条。</span>
+    </div>
+    <div class="footer-note" style="margin-top:8px;border-top:0;padding-top:0">
+      <span>© 2026 黑料51每日比赛 · 保留所有权利</span>
+      <span>中文站 · 内容按天归档</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn');
+  var nav=document.getElementById('mainNav');
+  if(menuBtn&&nav){
+    menuBtn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=980){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var form=document.getElementById('searchForm');
+  var input=document.getElementById('searchInput');
+  var fb=document.getElementById('searchFeedback');
+  var index=[];
+  document.querySelectorAll('main h2, main h3, main p, main summary, main .rank-item .name, main .cat-index a, main .reco a').forEach(function(el){
+    index.push({text:(el.textContent||'').trim(),el:el});
+  });
+  if(form&&input&&fb){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var q=input.value.trim().toLowerCase();
+      if(!q){fb.textContent='请输入战队名、赛程日期或选手昵称。';fb.className='search-feedback';return;}
+      var hit=index.filter(function(i){return i.text.toLowerCase().indexOf(q)>-1;});
+      if(hit.length){
+        fb.textContent='找到 '+hit.length+' 处相关内容，已定位到第一条：'+(hit[0].text.length>26?hit[0].text.slice(0,26)+'…':hit[0].text);
+        fb.className='search-feedback';
+        hit[0].el.scrollIntoView({behavior:'smooth',block:'center'});
+      }else{
+        fb.textContent='没有找到“'+input.value+'”，试试战队名（如狼队）、选手（如清融）或日期（如11月8日）。';
+        fb.className='search-feedback none';
+      }
+    });
+  }
+
+  var toTop=document.getElementById('toTop');
+  function onScroll(){
+    if(window.scrollY>520){toTop.classList.add('show');}else{toTop.classList.remove('show');}
+    highlight();
+  }
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href').replace('/#','#'));});
+  function highlight(){
+    var pos=window.scrollY+140;
+    var active=-1;
+    targets.forEach(function(t,i){
+      if(t&&t.offsetTop<=pos){active=i;}
+    });
+    links.forEach(function(a,i){a.classList.toggle('active',i===active);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+                                                            </html>
