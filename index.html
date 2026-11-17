@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>捷克街头金钱搭钱yandex-实测记录与判断方法</title>
+<meta name="description" content="捷克街头金钱搭钱yandex主题实测记录，整理布拉格与布尔诺街头的搭钱地点、金额档位、Yandex 搜索入口、视频来源核对方法与常见争议，附时间线与评论。">
+<meta name="keywords" content="捷克街头金钱搭钱yandex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c3d5a'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23e8b34a' stroke-width='4'/%3E%3Cpath d='M32 22v20M26 28h12' stroke='%23e8b34a' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1a222b;
+  --ink-soft:#46545f;
+  --muted:#6c7a85;
+  --paper:#f7f4ee;
+  --card:#ffffff;
+  --line:#ddd6c9;
+  --line-soft:#ebe5d9;
+  --brand:#1c3d5a;
+  --brand-deep:#12293d;
+  --accent:#c8892a;
+  --accent-soft:#f2e3c3;
+  --red:#a63f34;
+  --green:#3d7357;
+  --radius-s:6px;
+  --radius-m:12px;
+  --radius-l:20px;
+  --shadow-s:0 1px 2px rgba(26,34,43,.06),0 2px 8px rgba(26,34,43,.05);
+  --shadow-m:0 4px 16px rgba(26,34,43,.09);
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;
+  --space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+  --font:"Noto Serif SC","Songti SC","SimSun",Georgia,serif;
+  --font-ui:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --sticky-h:96px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sticky-h) + 12px)}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:16.5px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--font-ui);line-height:1.35;margin:0}
+h2{font-size:1.5rem;letter-spacing:.01em}
+h3{font-size:1.12rem}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1em;padding-left:1.3em}
+li{margin-bottom:.35em}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* 吸顶区 */
+.sticky-zone{position:sticky;top:0;z-index:60}
+.announce{
+  background:var(--brand-deep);color:#f2ede2;
+  font-family:var(--font-ui);font-size:.84rem;line-height:1.5;
+  padding:8px 0;
+}
+.announce .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.announce .badge{
+  background:var(--accent);color:#1b1408;font-weight:700;
+  padding:2px 8px;border-radius:999px;font-size:.72rem;letter-spacing:.05em;white-space:nowrap;
+}
+.announce a{color:#f7d99a;text-decoration:underline;text-underline-offset:3px}
+header.site-head{
+  background:rgba(247,244,238,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-s);
+}
+.head-inner{display:flex;align-items:center;gap:var(--space-4);padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:40px;height:40px;flex-shrink:0}
+.brand-text{font-family:var(--font-ui);font-weight:700;font-size:1rem;letter-spacing:.02em;color:var(--brand-deep);line-height:1.25;max-width:11em}
+.brand-text small{display:block;font-weight:400;font-size:.68rem;color:var(--muted);letter-spacing:.08em}
+.main-nav{margin-left:auto}
+.main-nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.main-nav a{
+  display:block;padding:6px 10px;border-radius:var(--radius-s);
+  font-family:var(--font-ui);font-size:.88rem;color:var(--ink-soft);
+}
+.main-nav a:hover{background:var(--accent-soft);color:var(--brand-deep);text-decoration:none}
+.head-tools{display:flex;gap:8px;align-items:center;margin-left:var(--space-3)}
+.search{
+  display:flex;align-items:center;border:1px solid var(--line);
+  border-radius:999px;background:var(--card);padding:3px 4px 3px 12px;
+}
+.search input{
+  border:0;background:transparent;font-family:var(--font-ui);
+  font-size:.86rem;width:150px;padding:5px 0;color:var(--ink);
+}
+.search input:focus{outline:none}
+.search input:focus-visible{outline:none}
+.search button{
+  border:0;background:var(--brand);color:#fff;border-radius:999px;
+  width:30px;height:30px;cursor:pointer;font-size:.86rem;line-height:1;
+}
+.search-status{font-family:var(--font-ui);font-size:.78rem;color:var(--red);display:none;margin-top:4px}
+.search-status.show{display:block}
+.menu-toggle{
+  display:none;border:1px solid var(--line);background:var(--card);
+  border-radius:var(--radius-s);padding:7px 12px;font-family:var(--font-ui);
+  font-size:.85rem;cursor:pointer;color:var(--ink);
+}
+.menu-toggle[aria-expanded="true"]{background:var(--accent-soft);border-color:var(--accent)}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#12293d 0%,#1c3d5a 58%,#28536f 100%);
+  color:#f4efe5;
+  padding:var(--space-7) 0 var(--space-8);
+}
+.hero::after{
+  content:"";position:absolute;inset:auto -80px -120px auto;width:420px;height:420px;
+  border-radius:50%;background:radial-gradient(circle,rgba(232,179,74,.28),transparent 65%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-6);align-items:center;position:relative;z-index:1}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-ui);font-size:.76rem;letter-spacing:.16em;
+  color:#f2d59a;border:1px solid rgba(242,213,154,.5);
+  border-radius:999px;padding:4px 14px;margin-bottom:18px;
+}
+.hero h1{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:800;letter-spacing:.01em;color:#fff;margin-bottom:16px}
+.hero-lede{font-size:1.03rem;color:#dbe4ea;max-width:34em;margin-bottom:22px}
+.hero-lede strong{color:#f6cf85;font-weight:600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.btn{
+  display:inline-block;font-family:var(--font-ui);font-size:.9rem;font-weight:600;
+  padding:10px 22px;border-radius:999px;border:1px solid transparent;
+  transition:transform .15s ease,box-shadow .15s ease;cursor:pointer;
+}
+.btn:hover{transform:translateY(-2px);text-decoration:none;box-shadow:var(--shadow-m)}
+.btn-primary{background:var(--accent);color:#1b1408}
+.btn-ghost{border-color:rgba(244,239,229,.45);color:#f4efe5}
+.hero-stats{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--font-ui);border-top:1px solid rgba(244,239,229,.18);padding-top:16px}
+.hero-stats div{font-size:.8rem;color:#b8c8d2;letter-spacing:.04em}
+.hero-stats b{display:block;font-size:1.35rem;color:#f6cf85;font-family:var(--font);letter-spacing:0}
+.hero-visual{position:relative}
+.hero-visual svg{width:100%;height:auto;filter:drop-shadow(0 14px 26px rgba(0,0,0,.3))}
+
+/* 主内容网格 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--space-6);padding:var(--space-7) 0 var(--space-8)}
+.main-col{min-width:0}
+.side-col{min-width:0}
+section.block{margin-bottom:var(--space-7);scroll-margin-top:calc(var(--sticky-h) + 12px)}
+.block-head{display:flex;align-items:baseline;gap:12px;margin-bottom:var(--space-4);border-bottom:2px solid var(--brand);padding-bottom:8px}
+.block-head h2{color:var(--brand-deep)}
+.block-head .kicker{font-family:var(--font-ui);font-size:.75rem;color:var(--accent);letter-spacing:.14em;font-weight:700;flex-shrink:0}
+.sec-note{font-size:.92rem;color:var(--ink-soft);margin:-6px 0 18px}
+
+.card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);box-shadow:var(--shadow-s)}
+.pad{padding:var(--space-5)}
+
+/* 概览 */
+.overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
+.ov-card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);padding:18px 20px}
+.ov-card h3{color:var(--brand-deep);font-size:1rem;margin-bottom:6px}
+.ov-card p{font-size:.93rem;margin:0;color:var(--ink-soft)}
+.ov-card .n{font-family:var(--font-ui);font-size:1.5rem;font-weight:800;color:var(--accent);display:block;line-height:1.2}
+
+/* 精选卡片 */
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+.feature{border-radius:var(--radius-m);overflow:hidden;background:var(--card);border:1px solid var(--line-soft);display:flex;flex-direction:column;transition:transform .15s ease}
+.feature:hover{transform:translateY(-3px)}
+.feature img{width:100%;height:150px;object-fit:cover}
+.feature .body{padding:14px 16px 18px;flex:1;display:flex;flex-direction:column}
+.feature h3{font-size:.98rem;color:var(--brand-deep);margin-bottom:6px}
+.feature p{font-size:.86rem;color:var(--ink-soft);margin:0 0 10px}
+.feature .meta{font-family:var(--font-ui);font-size:.74rem;color:var(--muted);margin-top:auto;letter-spacing:.03em}
+
+/* 列表紧凑 */
+.tight-list{list-style:none;padding:0;margin:0;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);overflow:hidden}
+.tight-list li{display:grid;grid-template-columns:76px 1fr auto;gap:14px;align-items:baseline;padding:12px 18px;border-bottom:1px solid var(--line-soft);margin:0}
+.tight-list li:last-child{border-bottom:0}
+.tight-list time{font-family:var(--font-ui);font-size:.76rem;color:var(--accent);font-weight:700;letter-spacing:.02em}
+.tight-list .t{font-size:.94rem;color:var(--ink)}
+.tight-list .t a{color:var(--ink)}
+.tight-list .tag{font-family:var(--font-ui);font-size:.72rem;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:1px 9px;white-space:nowrap}
+
+/* 分类索引 */
+.chip-index{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  font-family:var(--font-ui);font-size:.86rem;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+}
+.chip:hover{border-color:var(--accent);color:var(--brand-deep);background:var(--accent-soft);text-decoration:none}
+.chip b{color:var(--accent);font-weight:700;margin-left:4px;font-size:.76rem}
+
+/* 深度解析 */
+.deep{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:var(--space-6);box-shadow:var(--shadow-s)}
+.deep > p{font-size:1rem}
+.deep h3{color:var(--brand-deep);margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--accent)}
+.deep h3:first-of-type{margin-top:8px}
+.deep .callout{background:var(--accent-soft);border-radius:var(--radius-m);padding:16px 18px;font-size:.94rem;margin:18px 0;border-left:4px solid var(--accent)}
+.deep .callout b{color:var(--brand-deep)}
+.judge-table{width:100%;border-collapse:collapse;font-size:.9rem;margin:14px 0;font-family:var(--font-ui)}
+.judge-table th,.judge-table td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.judge-table th{background:var(--paper);color:var(--brand-deep);font-size:.82rem;letter-spacing:.03em}
+.judge-table td strong{color:var(--red)}
+blockquote.pull{margin:20px 0;padding:14px 20px;border-left:4px solid var(--brand);background:var(--paper);font-style:normal;border-radius:0 var(--radius-s) var(--radius-s) 0;color:var(--ink-soft)}
+
+/* 编号步骤 */
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:var(--space-3)}
+.steps li{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);padding:16px 18px 16px 64px;margin:0}
+.steps li .num{
+  position:absolute;left:16px;top:16px;width:34px;height:34px;border-radius:50%;
+  background:var(--brand);color:#fff;font-family:var(--font-ui);font-weight:700;
+  display:grid;place-items:center;font-size:.95rem;
+}
+.steps li h3{font-size:.98rem;color:var(--brand-deep);margin-bottom:4px}
+.steps li p{font-size:.9rem;color:var(--ink-soft);margin:0}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden}
+.compare > div{padding:18px 20px}
+.compare .a{background:#eef3ef;border-right:1px solid var(--line)}
+.compare .b{background:#faf1e3}
+.compare h3{font-size:.95rem;margin-bottom:8px;color:var(--brand-deep)}
+.compare ul{margin:0;padding-left:1.15em;font-size:.88rem;color:var(--ink-soft)}
+.compare li{margin-bottom:6px}
+
+/* FAQ */
+.faq details{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);margin-bottom:10px;overflow:hidden}
+.faq summary{
+  cursor:pointer;padding:14px 44px 14px 18px;font-family:var(--font-ui);
+  font-size:.95rem;font-weight:600;color:var(--brand-deep);position:relative;list-style:none;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:var(--accent);font-weight:400}
+.faq details[open] summary::after{content:"−"}
+.faq details[open] summary{background:var(--paper)}
+.faq .ans{padding:4px 18px 16px;font-size:.92rem;color:var(--ink-soft)}
+.faq .ans p:last-child{margin-bottom:0}
+
+/* 评论 */
+.comments{display:grid;gap:var(--space-3)}
+.comment{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);padding:16px 18px}
+.comment .who{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-family:var(--font-ui)}
+.comment .ava{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:700;flex-shrink:0}
+.comment .name{font-size:.86rem;font-weight:700;color:var(--brand-deep)}
+.comment .stamp{font-size:.74rem;color:var(--muted);margin-left:auto}
+.comment p{font-size:.92rem;margin:0 0 .4em;color:var(--ink-soft)}
+.comment p:last-child{margin-bottom:0}
+.comment .ref{font-family:var(--font-ui);font-size:.78rem;color:var(--accent);font-weight:600}
+
+/* 时间线 */
+.timeline{position:relative;list-style:none;padding:0 0 0 22px;margin:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;margin-bottom:20px}
+.timeline li::before{content:"";position:absolute;left:-29px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--accent)}
+.timeline time{font-family:var(--font-ui);font-size:.76rem;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.timeline h3{font-size:.95rem;color:var(--brand-deep);margin:2px 0 4px}
+.timeline p{font-size:.88rem;color:var(--ink-soft);margin:0}
+
+/* 相关推荐标签 */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag-cloud a{
+  font-family:var(--font-ui);font-size:.84rem;background:var(--card);
+  border:1px dashed var(--line);border-radius:var(--radius-s);padding:6px 13px;color:var(--ink-soft);
+}
+.tag-cloud a:hover{border-color:var(--accent);border-style:solid;color:var(--brand-deep);text-decoration:none}
+
+/* 侧栏 */
+.side-card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--radius-m);padding:18px;margin-bottom:var(--space-4)}
+.side-card h2,.side-card .side-h{font-size:.92rem;color:var(--brand-deep);margin-bottom:12px;letter-spacing:.04em}
+.side-nav{list-style:none;padding:0;margin:0;font-family:var(--font-ui)}
+.side-nav li{margin:0}
+.side-nav a{display:block;padding:7px 10px;font-size:.85rem;color:var(--ink-soft);border-left:2px solid transparent;border-radius:0 var(--radius-s) var(--radius-s) 0}
+.side-nav a:hover{background:var(--paper);text-decoration:none;color:var(--brand-deep)}
+.side-nav a.active{background:var(--accent-soft);border-left-color:var(--accent);color:var(--brand-deep);font-weight:700}
+.side-card .mini{font-size:.85rem;color:var(--ink-soft);line-height:1.7}
+.side-list{list-style:none;padding:0;margin:0;font-size:.86rem}
+.side-list li{padding:8px 0;border-bottom:1px dashed var(--line-soft);margin:0}
+.side-list li:last-child{border-bottom:0}
+.side-list a{color:var(--ink)}
+.side-list .d{font-family:var(--font-ui);font-size:.72rem;color:var(--muted);display:block}
+
+/* 页脚 */
+footer.site-foot{background:var(--brand-deep);color:#cfdae2;padding:var(--space-7) 0 var(--space-5);font-size:.9rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-6)}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.foot-brand .brand-text{color:#f4efe5}
+footer .foot-desc{color:#a9bbc7;font-size:.88rem;max-width:26em}
+footer h3{font-size:.85rem;color:#f2d59a;letter-spacing:.1em;margin-bottom:12px;font-family:var(--font-ui)}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:8px}
+footer a{color:#cfdae2;font-size:.86rem}
+footer a:hover{color:#f6cf85}
+.foot-bottom{border-top:1px solid rgba(207,218,226,.2);padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--font-ui);font-size:.78rem;color:#8ea3b1}
+.to-top{
+  position:fixed;right:22px;bottom:26px;z-index:50;width:44px;height:44px;border-radius:50%;
+  border:0;background:var(--brand);color:#fff;cursor:pointer;font-size:1.1rem;
+  box-shadow:var(--shadow-m);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{transform:translateY(-3px)}
+
+/* 响应式 */
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr;gap:var(--space-5)}
+  .side-col{order:2}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{order:-1;max-width:380px;margin-inline:auto}
+  .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .main-nav{
+    display:none;position:absolute;left:0;right:0;top:100%;
+    background:var(--paper);border-bottom:1px solid var(--line);
+    padding:10px 20px 16px;box-shadow:var(--shadow-m);
+  }
+  .main-nav.open{display:block}
+  .main-nav ul{flex-direction:column;gap:0}
+  .main-nav a{padding:9px 8px;font-size:.95rem}
+  .head-inner{flex-wrap:wrap;position:relative}
+  .menu-toggle{display:inline-block}
+  .head-tools{margin-left:0}
+  .search input{width:120px}
+  header.site-head{position:relative}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 28px)}
+  .hero{padding:var(--space-6) 0 var(--space-7)}
+  .overview-grid,.feature-grid,.compare{grid-template-columns:1fr}
+  .compare .a{border-right:0;border-bottom:1px solid var(--line)}
+  .deep{padding:var(--space-4)}
+  .tight-list li{grid-template-columns:64px 1fr;grid-template-areas:"time t" "time tag"}
+  .tight-list time{grid-area:time}
+  .tight-list .t{grid-area:t}
+  .tight-list .tag{grid-area:tag;justify-self:start}
+  .foot-grid{grid-template-columns:1fr}
+  .search input{width:96px}
+  .to-top{right:14px;bottom:16px;width:40px;height:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .btn:hover,.feature:hover,.to-top:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-zone">
+  <div class="announce">
+    <div class="wrap">
+      <span class="badge">更新 11-07</span>
+      <span>新增布拉格 Vinohrady 街头搭钱实拍 3 段，来源标注 Yandex 视频编号；FAQ 补入“金额是否提前约定”一问。</span>
+      <a href="/#latest">查看更新条目 →</a>
+    </div>
+  </div>
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="/#top" aria-label="捷克街头金钱搭钱yandex 首页">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="硬币与街道标线组成的图形标志">
+          <rect width="64" height="64" rx="14" fill="#1c3d5a"/>
+          <circle cx="32" cy="30" r="15" fill="none" stroke="#e8b34a" stroke-width="4"/>
+          <path d="M32 20v20M25 26h14" stroke="#e8b34a" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M12 54h40" stroke="#f4efe5" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 48l4-6 4 6M36 48l4-6 4 6" fill="none" stroke="#8ea3b1" stroke-width="2"/>
+        </svg>
+        <span class="brand-text">捷克街头金钱搭钱yandex<small>街头实验 · 检索核查</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <ul>
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见追问</a></li>
+          <li><a href="/#voices">路人评论</a></li>
+        </ul>
+      </nav>
+      <div class="head-tools">
+        <div class="search" role="search">
+          <label class="sr-only" for="q">站内搜索</label>
+          <input type="search" id="q" placeholder="搜地点 / 金额 / 视频编号" autocomplete="off">
+          <button type="button" id="searchBtn" aria-label="执行搜索">⌕</button>
+        </div>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">菜单</button>
+      </div>
+    </div>
+    <div class="wrap"><p class="search-status" id="searchStatus" role="status"></p></div>
+  </header>
+</div>
+
+<main id="top">
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">布拉格 · 布尔诺 · 街头实测</span>
+        <h1 id="heroTitle">捷克街头金钱搭钱yandex</h1>
+        <p class="hero-lede">在布拉格 Anděl 地铁口、布尔诺 Náměstí Svobody 广场，把 200、500、1000 克朗纸币摊在镜头前，记录路人停留、拒绝、追问的全过程。检索入口走 Yandex 视频与博客，<strong>每条素材标注编号、拍摄日期、地点街道</strong>，方便逐条回看核对。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#deep">读实测判断</a>
+          <a class="btn btn-ghost" href="/#channels">按街道找素材</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>37</b>条公开视频样本</div>
+          <div><b>6</b>个固定搭钱点位</div>
+          <div><b>200–2000</b>克朗金额档</div>
+          <div><b>11-01</b>最近一次补录</div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 420 360" role="img">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#28536f"/><stop offset="1" stop-color="#12293d"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="18" width="400" height="324" rx="22" fill="url(#g1)"/>
+          <path d="M40 300h340" stroke="#8ea3b1" stroke-width="4" stroke-linecap="round" stroke-dasharray="26 16"/>
+          <rect x="52" y="196" width="140" height="88" rx="8" fill="#f4efe5"/>
+          <rect x="66" y="212" width="30" height="58" rx="4" fill="#1c3d5a" opacity=".25"/>
+          <rect x="108" y="212" width="30" height="58" rx="4" fill="#1c3d5a" opacity=".25"/>
+          <rect x="150" y="212" width="30" height="58" rx="4" fill="#1c3d5a" opacity=".25"/>
+          <rect x="222" y="206" width="146" height="78" rx="8" fill="#e8b34a"/>
+          <rect x="238" y="222" width="36" height="48" rx="3" fill="#12293d" opacity=".35"/>
+          <rect x="288" y="222" width="36" height="48" rx="3" fill="#12293d" opacity=".35"/>
+          <circle cx="196" cy="128" r="54" fill="none" stroke="#e8b34a" stroke-width="6"/>
+          <circle cx="196" cy="128" r="38" fill="none" stroke="#f6cf85" stroke-width="3" opacity=".7"/>
+          <path d="M196 100v56M176 114h40" stroke="#e8b34a" stroke-width="5" stroke-linecap="round"/>
+          <rect x="60" y="70" width="76" height="26" rx="13" fill="#f4efe5" opacity=".9"/>
+          <rect x="304" y="76" width="64" height="26" rx="13" fill="#f4efe5" opacity=".55"/>
+          <path d="M338 148l10 22 22 10-22 10-10 22-10-22-22-10 22-10z" fill="#f6cf85" opacity=".85"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <div class="main-col">
+
+      <section class="block" id="overview">
+        <div class="block-head"><span class="kicker">01</span><h2>领域概览：街头搭钱在捷克是什么玩法</h2></div>
+        <p class="sec-note">“搭钱”指拍摄者把纸币或硬币摆在地上、长椅上，向陌生人提出小额交换目标，全程同意的规则先讲清。捷克本地创作者多用“peníze na ulici”描述。下面四组数字来自 10 月 9 日至 11 月 6 日整理的公开视频。</p>
+        <div class="overview-grid">
+          <div class="ov-card"><h3>常见金额档</h3><span class="n">200 / 500 / 1000 Kč</span><p>200 克朗最容易成交，1000 克朗以上被拒比例明显上升，部分视频出现直接走开不回话。</p></div>
+          <div class="ov-card"><h3>点位分布</h3><span class="n">布拉格 4 个</span><p>Anděl 地铁口、Náplavka 河岸、Vinohrady 街角、Karlín 广场；布尔诺 2 个，均在老城步行圈。</p></div>
+          <div class="ov-card"><h3>Yandex 检索入口</h3><span class="n">视频 + 博客双线</span><p>视频频道按编号归档，博客侧写拍摄说明与日期，两处编号可交叉核对，减少剪辑误读。</p></div>
+          <div class="ov-card"><h3>拍摄时段</h3><span class="n">17:00–20:00</span><p>傍晚路灯亮起时画面辨识度高，也是下班人流集中时段；白天拍摄的样本只有 9 条。</p></div>
+        </div>
+      </section>
+
+      <section class="block" id="featured">
+        <div class="block-head"><span class="kicker">02</span><h2>精选内容：三段值得逐帧回看的街头搭钱实拍</h2></div>
+        <div class="feature-grid">
+          <article class="feature">
+            <img src="https://picsum.photos/seed/prague-andel-money/560/320" width="560" height="320" loading="lazy" alt="布拉格 Anděl 地铁口台阶旁的行人与长椅" style="object-fit:cover">
+            <div class="body">
+              <h3>Anděl 地铁口 500 克朗换一首歌</h3>
+              <p>拍摄者把 500 克朗压在歌词纸上，要求对方唱满 30 秒。当晚 7 位路人，4 人答应，2 人先问“钱从哪来”。</p>
+              <span class="meta">编号 PR-1102 · 11-02 · 时长 9′14″</span>
+            </div>
+          </article>
+          <article class="feature">
+            <img src="https://picsum.photos/seed/brno-square-coins/560/320" width="560" height="320" loading="lazy" alt="布尔诺自由广场石板路上的硬币与彩色地砖" style="object-fit:cover">
+            <div class="body">
+              <h3>布尔诺广场：硬币版 1 克朗换 20 克朗</h3>
+              <p>规则是用 1 克朗硬币换 20 克朗硬币，输赢都归对方。52 次交换中有 11 次被要求先解释用途。</p>
+              <span class="meta">编号 BR-1029 · 10-29 · 时长 6′02″</span>
+            </div>
+          </article>
+          <article class="feature">
+            <img src="https://picsum.photos/seed/naphlavka-night-banknote/560/320" width="560" height="320" loading="lazy" alt="伏尔塔瓦河岸夜间的路灯与纸币特写" style="object-fit:cover">
+            <div class="body">
+              <h3>Náplavka 河岸：1000 克朗问一个城市建议</h3>
+              <p>金额抬高后画面更好看，拒绝率也更高。同意者给出的建议集中在租金、通勤、周末去处三类。</p>
+              <span class="meta">编号 PR-1031 · 10-31 · 时长 12′40″</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="latest">
+        <div class="block-head"><span class="kicker">03</span><h2>最新更新：11 月第一周的补录与更正</h2></div>
+        <ul class="tight-list">
+          <li><time>11-07</time><span class="t"><a href="/#deep">Vinohrady 第 3 段素材补上完整对话字幕，前版剪掉了 18 秒解释环节</a></span><span class="tag">更正</span></li>
+          <li><time>11-06</time><span class="t"><a href="/#voices">Anděl 长椅素材下收到一条现场当事人留言，称先被问“是否在录像”</a></span><span class="tag">互动</span></li>
+          <li><time>11-04</time><span class="t"><a href="/#timeline">布尔诺 Náměstí Svobody 点位新增两次 1000 克朗档失败记录</a></span><span class="tag">补录</span></li>
+          <li><time>11-02</time><span class="t"><a href="/#guide">整理 Yandex 视频编号检索表，按拍摄日期而非上传日期排序</a></span><span class="tag">工具</span></li>
+          <li><time>10-31</time><span class="t"><a href="/#channels">Karlín 广场夜间点位确认可用，路灯照度足够，画面不糊</a></span><span class="tag">点位</span></li>
+          <li><time>10-27</time><span class="t"><a href="/#faq">FAQ 增加“被拒后对方反悔要回钱怎么办”一问</a></span><span class="tag">问答</span></li>
+        </ul>
+      </section>
+
+      <section class="block" id="channels">
+        <div class="block-head"><span class="kicker">04</span><h2>分类入口：按街道、金额与视频编号找素材</h2></div>
+        <p class="sec-note">点位名改用本地人实际称呼，括号内是 Yandex 地图能直接搜到的拼写；编号前缀 PR 为布拉格，BR 为布尔诺。</p>
+        <div class="chip-index">
+          <a class="chip" href="/#featured">布拉格 Anděl 地铁口 <b>9</b></a>
+          <a class="chip" href="/#featured">布拉格 Náplavka 河岸 <b>7</b></a>
+          <a class="chip" href="/#featured">布拉格 Vinohrady 街角 <b>6</b></a>
+          <a class="chip" href="/#featured">布拉格 Karlín 广场 <b>4</b></a>
+          <a class="chip" href="/#featured">布尔诺自由广场 <b>8</b></a>
+          <a class="chip" href="/#featured">布尔诺老城步行街 <b>3</b></a>
+          <a class="chip" href="/#latest">200 克朗小额档 <b>12</b></a>
+          <a class="chip" href="/#latest">500 克朗中额档 <b>15</b></a>
+          <a class="chip" href="/#latest">1000 克朗高额档 <b>7</b></a>
+          <a class="chip" href="/#timeline">含完整解释环节 <b>19</b></a>
+          <a class="chip" href="/#voices">有现场当事人留言 <b>5</b></a>
+          <a class="chip" href="/#timeline">夜间拍摄 <b>24</b></a>
+        </div>
+      </section>
+
+      <section class="block" id="deep">
+        <div class="block-head"><span class="kicker">05</span><h2>深度解析：金额越高，搭钱视频的“可信段落”反而越短</h2></div>
+        <div class="deep">
+          <p>37 条样本按金额分成三档后，出现一个不太符合直觉的分布：1000 克朗档成片平均 11 分 20 秒，但真正完成“解释规则—对方同意—完成交换”的完整段落只有 2 分 05 秒；200 克朗档片段短，完整段落占比却达到六成。判断一条搭钱素材是否值得引用，看的是完整段落比例，不是总时长。</p>
+
+          <h3>案例时间线：PR-1031 的 12 分钟里发生了什么</h3>
+          <p>10 月 31 日 18:42，拍摄者在 Náplavka 河岸石阶摆出 1000 克朗。18:44 第一位路人停下，问“这是广告吗”，得到否定答复后离开。18:49 第二位同意，但要求先对着镜头说明钱是拍摄者自己的，这段 38 秒被保留在成片里。19:03 第三位拿走钱后返回，要求删掉自己正脸，最终成片用背影替代。19:10 收工。12 分钟成片中可核对的部分，集中在 18:49 到 19:03 这 14 分钟内的三段对话。</p>
+
+          <h3>数据对比：两种“同意率”算法差出 21 个百分点</h3>
+          <p>以搭话次数为分母，500 克朗档同意率 46%；以实际停下听完规则的人数为分母，同意率升至 67%。差别来自被直接无视的那些路人：他们没进入对话，却常被剪进片头营造“街头冷漠”。同一批素材，换个分母就是另一个结论。</p>
+          <table class="judge-table">
+            <caption class="sr-only">不同金额档的完整段落比例对照</caption>
+            <thead><tr><th>金额档</th><th>成片均长</th><th>完整段落</th><th>占比</th></tr></thead>
+            <tbody>
+              <tr><td>200 Kč（12 条）</td><td>4′30″</td><td>2′42″</td><td><strong>60%</strong></td></tr>
+              <tr><td>500 Kč（15 条）</td><td>7′10″</td><td>3′12″</td><td>45%</td></tr>
+              <tr><td>1000 Kč（7 条）</td><td>11′20″</td><td>2′05″</td><td>18%</td></tr>
+            </tbody>
+          </table>
+
+          <h3>说法差异：当事人回忆与成片对不上的那一处</h3>
+          <p>11 月 6 日一条留言称，在 Anděl 被拍摄前先被问了“是否在录像”，而成片里这句提问出现在递交纸币之后。回看原始素材，提问发生在 00:41，递交发生在 01:26，剪辑调换了顺序。这是剪辑顺序问题，不是事实伪造，但足以影响观众对“知情同意”的判断。原始素材未公开，只能以留言与成片时间戳并列呈现。</p>
+
+          <div class="callout"><b>可被反驳的判断：</b>“金额越大越有戏剧性，所以高额档更值得引用。”按上面三档数据，高额档完整段落占比只有 18%，观众记住的多是僵持和走开；如果目的是展示街头互动规则本身，200 与 500 克朗档的信息密度更高。</div>
+
+          <h3>规则前后变化：2025 年起布拉格部分区域的口头提醒</h3>
+          <p>布拉格一区、二区部分步行街管理方在 2025 年春季起，对长时间占道拍摄有口头提醒，要求不阻挡通行、不使用三脚架。样本里有 4 条注明“改用手持拍摄”，画面轻微晃动与此有关。规则没有写成禁令，执行依现场人员判断，因此同一条街不同日期的拍摄条件并不相同。</p>
+
+          <blockquote class="pull">把“搭钱”当成社会实验看，最该被记录的不是谁拿了钱，而是规则被讲清楚的那几十秒。那几十秒一旦剪掉，剩下的一切都只是表演。</blockquote>
+
+          <h3>判断拆成可核对结构：三问定去留</h3>
+          <ol>
+            <li><b>有没有规则陈述段？</b>数一下从“这钱是我的”到“你同意吗”之间的秒数，少于 10 秒的基本可判为表演性剪辑。</li>
+            <li><b>拒绝镜头是否保留？</b>连续 3 条以上全是同意，且无人回头、无人质疑，可信度下调一档。</li>
+            <li><b>金额与地点能否对上？</b>用 Yandex 街景核对长椅、地砖、路灯位置，对不上的按转述处理。</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="block" id="guide">
+        <div class="block-head"><span class="kicker">06</span><h2>体验指南：自己去街头看一次，按这五步走</h2></div>
+        <ol class="steps">
+          <li><div class="num">1</div><h3>先定点位，不要临街随机</h3><p>Anděl 地铁口台阶、Karlín 广场长椅、自由广场喷泉旁，三处有稳定人流且不挡通道。河岸石阶风大，纸币要压重物。</p></li>
+          <li><div class="num">2</div><h3>金额从 200 克朗起</h3><p>小额档同意率高，也更容易在 5 分钟内完成一轮完整对话。1000 克朗档建议放在第二轮之后，避免一开始就被当成推销。</p></li>
+          <li><div class="num">3</div><h3>开口第一句讲规则</h3><p>“这钱是我的，我想换你一句话/一首歌，你同意我再递。”把同意节点放在递钱之前，画面里也能看清。</p></li>
+          <li><div class="num">4</div><h3>用 Yandex 反向核位置</h3><p>拍完把街景截图存档，记录路牌拼写与店铺名。检索编号与街景日期一起写进说明，方便别人复查。</p></li>
+          <li><div class="num">5</div><h3>被拒就停，不留镜头</h3><p>对方摆手或加快脚步时结束对话，不追拍。样本中被拒后继续跟拍的 3 条，评论区争议都集中在这一点。</p></li>
+        </ol>
+      </section>
+
+      <section class="block" id="compare">
+        <div class="block-head"><span class="kicker">07</span><h2>对照面板：围观者看到的 vs 现场实际发生的</h2></div>
+        <div class="compare">
+          <div class="a">
+            <h3>成片呈现</h3>
+            <ul>
+              <li>纸币一亮，路人立刻围上来</li>
+              <li>对话干脆，三句话成交</li>
+              <li>被拒镜头一闪而过</li>
+              <li>背景音乐盖住环境噪音</li>
+            </ul>
+          </div>
+          <div class="b">
+            <h3>现场记录</h3>
+            <ul>
+              <li>前 90 秒通常无人停留</li>
+              <li>多数人要问清用途才伸手</li>
+              <li>被拒占尝试次数的一半以上</li>
+              <li>电车进站声常盖过人声</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="timeline">
+        <div class="block-head"><span class="kicker">08</span><h2>时间线：10 月 9 日到 11 月 7 日的六次搭钱记录</h2></div>
+        <ul class="timeline">
+          <li><time>10-09</time><h3>Karlín 广场首拍</h3><p>200 克朗档，9 次尝试 5 次成交；第一次被要求出示证件，拍摄者拒绝后对方离开。</p></li>
+          <li><time>10-15</time><h3>布尔诺老城步行街</h3><p>硬币交换规则，52 次里 11 次被追问用途；有两位老人建议“别在教堂门口拍”。</p></li>
+          <li><time>10-22</time><h3>Anděl 地铁口雨夜</h3><p>雨具遮挡镜头，成片可用画面不足 3 分钟，整条按失败样本归档，未计入选集。</p></li>
+          <li><time>10-29</time><h3>自由广场 500 克朗档</h3><p>同意率 46%，一位受访者主动要求把钱捐给附近收容站，交换改为代捐。</p></li>
+          <li><time>10-31</time><h3>Náplavka 1000 克朗档</h3><p>完整段落 2 分 05 秒，出现删脸要求，最终以背影替代正脸。</p></li>
+          <li><time>11-07</time><h3>Vinohrady 字幕补录</h3><p>补回 18 秒解释环节，前版成片的时间戳顺序在补录版中恢复。</p></li>
+        </ul>
+      </section>
+
+      <section class="block" id="faq">
+        <div class="block-head"><span class="kicker">09</span><h2>常见追问：金额、同意与检索的八个问题</h2></div>
+        <div class="faq">
+          <details>
+            <summary>街头搭钱一般放多少克朗比较合适？</summary>
+            <div class="ans"><p>200 克朗是样本里最常用的起点，成交率约六成；500 克朗适合需要对方多停留一会儿的交换；1000 克朗以上被拒比例明显上升，且容易引发“是不是骗局”的追问。</p></div>
+          </details>
+          <details>
+            <summary>金额是提前讲好，还是让对方自己抽？</summary>
+            <div class="ans"><p>样本里两种都有。提前讲好的 21 条，对方追问次数少；让对方抽的 16 条，画面更热闹，但“抽完才说规则”的剪法争议最大，补录版通常会加上规则陈述。</p></div>
+          </details>
+          <details>
+            <summary>被拒绝之后还能继续拍吗？</summary>
+            <div class="ans"><p>摆手、加快脚步、转身都算明确拒绝，应收起设备结束对话。跟拍背影在捷克本地评论区常被点名批评，有 3 条素材因此关闭了评论。</p></div>
+          </details>
+          <details>
+            <summary>怎么用 Yandex 找到原始视频编号？</summary>
+            <div class="ans"><p>在 Yandex 视频搜索里输入点位拼写加金额，例如“Náplavka 1000 Kč”，再按上传日期筛选。视频说明常带 PR- 或 BR- 编号，与博客侧写对照即可确认拍摄日期。</p></div>
+          </details>
+          <details>
+            <summary>纸币道具会不会被当成假钞？</summary>
+            <div class="ans"><p>会。样本中有 4 次被要求验钞，其中 1 次对方用手机灯照水印。拍摄者提前准备零钱、当面在便利店找开，能减少这类中断。</p></div>
+          </details>
+          <details>
+            <summary>街头搭钱需要事先申请许可吗？</summary>
+            <div class="ans"><p>普通手持拍摄、不设三脚架、不挡通道，通常按一般拍摄处理；部分步行街管理方 2025 年起有口头提醒，要求缩短占位时间。涉及商业拍摄另按当地规定办。</p></div>
+          </details>
+          <details>
+            <summary>为什么同一段素材有不同版本？</summary>
+            <div class="ans"><p>补录版会加回解释环节、调整字幕时间戳。PR-1031 就有初版与补录版两条，差别在 00:41 与 01:26 的顺序。引用时写明版本，比只写编号更可靠。</p></div>
+          </details>
+          <details>
+            <summary>当事人事后要求删脸，一般怎么处理？</summary>
+            <div class="ans"><p>常见做法是剪掉正脸、保留背影与声音变调，并在说明里注明。若对方要求整段下架，多数创作者会照办；样本里有 2 条因此转为不公开。</p></div>
+          </details>
+        </div>
+      </section>
+
+      <section class="block" id="voices">
+        <div class="block-head"><span class="kicker">10</span><h2>路人评论：同意、质疑与现场补充</h2></div>
+        <div class="comments">
+          <div class="comment">
+            <div class="who"><span class="ava">J</span><span class="name">Jakub N.</span><span class="stamp">11-06</span></div>
+            <p>Anděl 那条我就在旁边。拍摄者确实先问了一句“介意录像吗”，只是成片里放到递钱之后了。剪辑顺序改了，观感就完全不同。</p>
+            <p class="ref">指向：PR-1102 成片 00:41 与 01:26</p>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="ava">T</span><span class="name">Tereza</span><span class="stamp">11-05</span></div>
+            <p>500 克朗换一首歌那个，我觉得挺好玩。但背景音乐压得太满，听不清对方唱了什么，热闹是热闹，信息少了。</p>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="ava">M</span><span class="name">Martin K.</span><span class="stamp">11-03</span></div>
+            <p>1000 克朗问城市建议，最后剪出来全是“房租太贵”。这不用搭钱也能知道。钱花了，答案没增量。</p>
+            <p class="ref">指向：PR-1031 建议段落</p>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="ava">L</span><span class="name">Lucie</span><span class="stamp">11-01</span></div>
+            <p>布尔诺广场硬币那段节奏最好，没配乐，能听见硬币落在石板上的声音，也能听见有人问“为什么是一克朗”。</p>
+            <p class="ref">指向：BR-1029</p>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="ava">P</span><span class="name">Petr</span><span class="stamp">10-30</span></div>
+            <p>说不上好坏。街头整活看得多了，这套流程挺规矩的，至少被拒是真的停，没追着人拍。</p>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="ava">A</span><span class="name">Anna</span><span class="stamp">10-28</span></div>
+            <p>Karlín 那条雨夜失败样本反而最有意思，画面糊，人声清楚，能听见拍摄者自己说“今天算了”。比成功的几条真实。</p>
+            <p class="ref">指向：10-22 雨夜归档</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="news">
+        <div class="block-head"><span class="kicker">11</span><h2>相关资讯：规则提醒、检索变化与地方讨论</h2></div>
+        <ul class="tight-list">
+          <li><time>11-05</time><span class="t">布拉格二区步行街管理方重申不在通道设三脚架，4 条样本改为手持</span><span class="tag">规则</span></li>
+          <li><time>11-03</time><span class="t">Yandex 视频检索结果页展示上传日期，按拍摄日排序需手动对照编号</span><span class="tag">检索</span></li>
+          <li><time>10-30</time><span class="t">布尔诺本地论坛讨论“街头给钱拍摄是否算打扰”，回帖集中在教堂门口路段</span><span class="tag">讨论</span></li>
+          <li><time>10-26</time><span class="t">两条素材因当事人要求删脸转为不公开，编号保留在索引中</span><span class="tag">版权</span></li>
+        </ul>
+      </section>
+
+      <section class="block" id="related">
+        <div class="block-head"><span class="kicker">12</span><h2>相关推荐：继续看这些具体条目</h2></div>
+        <div class="tag-cloud">
+          <a href="/#featured">布拉格 Anděl 地铁口搭钱</a>
+          <a href="/#featured">布尔诺自由广场硬币交换</a>
+          <a href="/#deep">Náplavka 1000 克朗城市建议</a>
+          <a href="/#deep">街头搭钱同意率怎么算</a>
+          <a href="/#faq">Yandex 视频编号怎么核对</a>
+          <a href="/#guide">布拉格街头拍摄许可提醒</a>
+          <a href="/#timeline">Vinohrady 补录版字幕</a>
+          <a href="/#voices">Karlín 雨夜失败样本</a>
+          <a href="/#compare">成片与现场的差异清单</a>
+        </div>
+      </section>
+
+      <section class="block" id="checklist">
+        <div class="block-head"><span class="kicker">13</span><h2>可信度分层：三类素材分开看</h2></div>
+        <div class="overview-grid">
+          <div class="ov-card"><h3>A 类｜可核对</h3><p>保留规则陈述段、拒绝镜头与街景截图，编号与日期能对上。样本 19 条。这类适合直接引用。</p></div>
+          <div class="ov-card"><h3>B 类｜部分可核</h3><p>有编号和地点，但解释环节被剪或时间戳调整。样本 13 条。引用时需注明版本差异。</p></div>
+          <div class="ov-card"><h3>C 类｜仅作转述</h3><p>无编号、无街景、只有成片。样本 5 条。只能作为说法记录，不作事实依据。</p></div>
+          <div class="ov-card"><h3>分层依据</h3><p>三项要件：规则陈述、拒绝镜头、位置可核。三项齐全入 A，缺一项入 B，缺两项以上入 C。</p></div>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="side-col" aria-label="侧栏导航与补充">
+      <div class="side-card">
+        <p class="side-h">本页目录</p>
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#featured">精选内容</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#compare">对照面板</a></li>
+          <li><a href="/#timeline">时间线</a></li>
+          <li><a href="/#faq">常见追问</a></li>
+          <li><a href="/#voices">路人评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#checklist">可信度分层</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <p class="side-h">编号速查</p>
+        <ul class="side-list">
+          <li><a href="/#featured">PR-1102 · Anděl 500 Kč</a><span class="d">11-02 · 布拉格</span></li>
+          <li><a href="/#featured">BR-1029 · 自由广场硬币</a><span class="d">10-29 · 布尔诺</span></li>
+          <li><a href="/#featured">PR-1031 · Náplavka 1000 Kč</a><span class="d">10-31 · 布拉格</span></li>
+          <li><a href="/#timeline">PR-1009 · Karlín 200 Kč</a><span class="d">10-09 · 布拉格</span></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <p class="side-h">数据口径</p>
+        <p class="mini">样本为 2025 年 10 月 9 日至 11 月 7 日公开可查的 37 条视频，金额单位克朗（Kč）。同意率分“搭话分母”和“听话分母”两种，正文均已标注。示例条目含虚构人物昵称，编号与日期为可核对锚点。</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#e8b34a"/>
+            <circle cx="32" cy="30" r="15" fill="none" stroke="#12293d" stroke-width="4"/>
+            <path d="M32 20v20M25 26h14" stroke="#12293d" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-text">捷克街头金钱搭钱yandex</span>
+        </div>
+        <p class="foot-desc">记录街头小额交换的完整对话，标注编号、日期与街景位置，让每一次同意与拒绝都能被回看。</p>
+      </div>
+      <div>
+        <h3>素材栏目</h3>
+        <ul>
+          <li><a href="/#featured">精选实拍</a></li>
+          <li><a href="/#latest">最新更新</a></li>
+          <li><a href="/#channels">街道索引</a></li>
+          <li><a href="/#timeline">拍摄时间线</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>判断方法</h3>
+        <ul>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#checklist">可信度分层</a></li>
+          <li><a href="/#faq">常见追问</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>参与</h3>
+        <ul>
+          <li><a href="/#voices">路人评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+          <li><a href="/#compare">成片与现场对照</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>页面更新：2026-11-08 · 对应正文 11-07 字幕补录与 11-06 当事人留言</span>
+      <span>示例数据说明：人物昵称为虚构，地点、编号、日期与金额档位为可核对的示例锚点。版权归原拍摄者，引用请注明编号与版本。</span>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="to-top" id="toTop" aria-label="回到页面顶部">↑</button>
+
+<script>
+(function(){
+  var menuToggle=document.getElementById('menuToggle');
+  var mainNav=document.getElementById('mainNav');
+  if(menuToggle&&mainNav){
+    menuToggle.addEventListener('click',function(){
+      var open=mainNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded',open?'true':'false');
+    });
+    mainNav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.matchMedia('(max-width:820px)').matches){
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600){toTop.classList.add('show');}
+    else{toTop.classList.remove('show');}
+  },{passive:true});
+  toTop.addEventListener('click',function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+  });
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var targets=links.map(function(a){
+    var id=a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  function highlight(){
+    var pos=window.scrollY+120;
+    var current=null;
+    targets.forEach(function(t){
+      if(t.offsetTop<=pos){current=t.id;}
+    });
+    links.forEach(function(a){
+      var id=a.getAttribute('href').replace('/#','');
+      a.classList.toggle('active',id===current);
+    });
+  }
+  if(targets.length){
+    window.addEventListener('scroll',highlight,{passive:true});
+    highlight();
+  }
+
+  var q=document.getElementById('q');
+  var btn=document.getElementById('searchBtn');
+  var status=document.getElementById('searchStatus');
+  var sections=Array.prototype.slice.call(document.querySelectorAll('main section.block, main section.hero'));
+
+  function runSearch(){
+    var term=(q.value||'').trim();
+    if(!term){
+      status.classList.remove('show');
+      status.textContent='';
+      return;
+    }
+    var found=[];
+    sections.forEach(function(sec){
+      var text=sec.textContent||'';
+      if(text.toLowerCase().indexOf(term.toLowerCase())!==-1){
+        var h=sec.querySelector('h2, h1');
+        found.push(h?h.textContent.trim():sec.id);
+      }
+    });
+    status.classList.add('show');
+    if(found.length){
+      status.textContent='找到 '+found.length+' 个板块：'+found.slice(0,4).join('、')+'。可用浏览器内查找定位具体句子。';
+    }else{
+      status.textContent='没有匹配“'+term+'”的条目。可换用街道拼写、克朗金额或 PR-/BR- 视频编号再试。';
+    }
+  }
+  btn.addEventListener('click',runSearch);
+  q.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();runSearch();}
+  });
+  q.addEventListener('input',function(){
+    if(!q.value.trim()){status.classList.remove('show');status.textContent='';}
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"捷克街头金钱搭钱yandex",
+  "description":"记录布拉格与布尔诺街头小额交换实拍，标注视频编号、日期与街景位置，整理检索与核对方法。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"街头搭钱一般放多少克朗比较合适？","acceptedAnswer":{"@type":"Answer","text":"200 克朗是样本里最常用的起点，成交率约六成；500 克朗适合需要对方多停留一会儿的交换；1000 克朗以上被拒比例明显上升。"}},
+    {"@type":"Question","name":"金额是提前讲好，还是让对方自己抽？","acceptedAnswer":{"@type":"Answer","text":"样本里两种都有。提前讲好的 21 条，对方追问次数少；让对方抽的 16 条，画面更热闹，但“抽完才说规则”的剪法争议最大。"}},
+    {"@type":"Question","name":"被拒绝之后还能继续拍吗？","acceptedAnswer":{"@type":"Answer","text":"摆手、加快脚步、转身都算明确拒绝，应收起设备结束对话。跟拍背影在捷克本地评论区常被点名批评。"}},
+    {"@type":"Question","name":"怎么用 Yandex 找到原始视频编号？","acceptedAnswer":{"@type":"Answer","text":"在 Yandex 视频搜索里输入点位拼写加金额，再按上传日期筛选。视频说明常带 PR- 或 BR- 编号，与博客侧写对照即可确认拍摄日期。"}},
+    {"@type":"Question","name":"纸币道具会不会被当成假钞？","acceptedAnswer":{"@type":"Answer","text":"会。样本中有 4 次被要求验钞。提前准备零钱、当面在便利店找开，能减少这类中断。"}}
+  ]
+}
+</script>
+</body>
+                                                                </html>
